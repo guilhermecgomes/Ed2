@@ -28,6 +28,7 @@ typedef struct No{
 
 typedef No* Arvore;
 
+void mostrarArvore_Bfs(Arvore);
 void mostrarArvore_Red(Arvore);
 void mostrarArvore_edR(Arvore);
 Arvore criarArvoreVazia( );                 // cria a árvore vazia
@@ -52,6 +53,8 @@ main(){
 		mostrarArvore(raiz2);
 		printf("\n");
 		mostrarArvore_edR(raiz2);
+		printf("\n");
+		mostrarArvore_Bfs(raiz2);
 	}
 		else printf("\n\n arvore vazia \n");
     printf("\n\n");
@@ -67,6 +70,8 @@ main(){
 		mostrarArvore(raiz2);
 		printf("\n");
 		mostrarArvore_Red(raiz2);
+		printf("\n");
+		mostrarArvore_Bfs(raiz2);
 	}
 	    else printf("\n\n arvore vazia \n");
     printf("\n\n");
@@ -121,6 +126,31 @@ void mostrarArvore_Red(Arvore ap){
 		mostrarRaiz(ap);
 		mostrarArvore_Red(ap->esq);
 		mostrarArvore_Red(ap->dir);
+	}
+}
+
+void mostrarArvore_Bfs(Arvore a){
+	Fila f;
+	No *p, *e,*d;
+	int ok;
+	criarFilaVazia(&f);
+	if(a != NULL){
+		p = a;
+		pushFila(&f,p);
+		do{
+			p = acessarFila(&f);
+			mostrarRaiz(p);
+			popFila(&f);
+			e = p->esq;
+			if(e != NULL){
+			  	pushFila(&f,e);
+			}
+			d = p->dir;
+			if(d!=NULL){
+			  	pushFila(&f,d);
+			}
+			ok = verificarFilaVazia(&f);
+		}while(ok != 1);
 	}
 }
 
