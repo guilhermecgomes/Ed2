@@ -2,14 +2,14 @@
   Arquivo: ABB_PatoDonald.c
   Autor: Pato Donald
   Date: 21/03/10 08:19
-  Descrição: Este programa implementa as operações elementares de  uma Árvore Binária de Busca:
-  criação, busca, inserção e remoção.  Inserir não aceita duplicatas. Remover com as duas versões.
-  Implementa também as funções obter Pai, ancestral,determinarAltura e eRd iterativo.
+  DescriÃ§Ã£o: Este programa implementa as operaÃ§Ãµes elementares de  uma Ãrvore BinÃ¡ria de Busca:
+  criaÃ§Ã£o, busca, inserÃ§Ã£o e remoÃ§Ã£o.  Inserir nÃ£o aceita duplicatas. Remover com as duas versÃµes.
+  Implementa tambÃ©m as funÃ§Ãµes obter Pai, ancestral,determinarAltura e eRd iterativo.
   Implementa ancestral recursivo.
 */
 #include <stdio.h>
 #include <locale.h>
-#include <stdlib.h>  /* a constante NULL está nesta biblioteca */
+#include <stdlib.h>  /* a constante NULL estÃ¡ nesta biblioteca */
 #include "PilhaPointer.h"
 #include "FilaPointer.h"
 #include "Booleano.h"
@@ -25,11 +25,11 @@ typedef struct No{
 
 typedef No* ArvoreBB;
 
-//protótipos No
+//protÃ³tipos No
    void mostrarNo(No*);							//[1]
    No* criarNo(int,char);						//[2]
 
-// protótipos ArvoreBB
+// protÃ³tipos ArvoreBB
 	ArvoreBB criarArvoreBB( );					//[3]
 	bool verificarArvoreVazia(ArvoreBB);		//[4]
 	void mostrarArvore(ArvoreBB);				//[5]
@@ -37,14 +37,14 @@ typedef No* ArvoreBB;
 	void edR(ArvoreBB);							//[7]
 	void Bfs(ArvoreBB);							//[8]
 	
-	ArvoreBB inserirNo(ArvoreBB, No*);     	    // [9]  não recursivo	ok
-	No* buscarNo(ArvoreBB, int);        	    // [10]  não recursivo	ok
-	ArvoreBB removerRaiz(ArvoreBB);     	    // [11]  não recursivo	em desenvolvimento
+	ArvoreBB inserirNo(ArvoreBB, No*);     	    // [9]  nÃ£o recursivo	ok
+	No* buscarNo(ArvoreBB, int);        	    // [10]  nÃ£o recursivo	ok
+	ArvoreBB removerRaiz(ArvoreBB);     	    // [11]  nÃ£o recursivo	em desenvolvimento
 	ArvoreBB removerNo(ArvoreBB, int);  	    // [12]  usando removerRaiz	em desenvolvimento
 	int determinarAltura(ArvoreBB);    		    // [13] 	ok
-    void mostrarArvoreERD(ArvoreBB);       		// [14]  não recursivo	em desenvolvimento
+    void mostrarArvoreERD(ArvoreBB);       		// [14]  nÃ£o recursivo	em desenvolvimento
 	No* obterPai(ArvoreBB, No*);           		// [15]	em desenvolvimento
-	No* obterAncestral(ArvoreBB, No*, No*);     // [16]  não recursivo	em desenvolvimento
+	No* obterAncestral(ArvoreBB, No*, No*);     // [16]  nÃ£o recursivo	em desenvolvimento
 	No* obterAncestralRec(ArvoreBB, No*, No*);  // [17]  recursivo	em desenvolvimento
 
 main(){
@@ -61,8 +61,8 @@ main(){
     }
       
     printf("Arvore:\n\n");printf("Arvore em eRd - Recursivo\n");  		mostrarArvore(a);
-    printf("\n\n");		  printf("Arvore em eRd - Não recursivo\n");    mostrarArvoreERD(a);
-	printf("\n\n");		  printf("Arvore em Bfs - Não recursivo\n");	Bfs(a);
+    printf("\n\n");		  printf("Arvore em eRd - NÃ£o recursivo\n");    mostrarArvoreERD(a);
+	printf("\n\n");		  printf("Arvore em Bfs - NÃ£o recursivo\n");	Bfs(a);
 	printf("\n\n");		  printf("Arvore em edR - Recursivo\n");		edR(a);
 	printf("\n\n");       printf("Arvore em Red - Recursivo\n");		Red(a);
 
@@ -73,28 +73,28 @@ main(){
 	printf("\nAltura da arvore:%d",altura);
 	////    altura	   ////
 	
-    ////	buscar nó	////
+    ////	buscar nÃ³	////
 	int valor;
 	printf("\nQual o valor para procurar:");
 	scanf("%d",&valor);
 	no = buscarNo(a,valor);
 	if(no == NULL){
-		printf("Não existe");
+		printf("NÃ£o existe");
 	}
 	else{
 		printf("\n\nEncontrei no S,atelite %c ",no->satelite);	
 	}
-    ////	buscar nó  //// 
+    ////	buscar nÃ³  //// 
     //// remover raiz  ////
 	a = removerRaiz(a);
-	printf("Arvore:\n\n");printf("Arvore em Bfs - Não recursivo\n");	Bfs(a);
+	printf("Arvore:\n\n");printf("Arvore em Bfs - NÃ£o recursivo\n");	Bfs(a);
     //// remover raiz  ////
     //// remover no	   ////
     int valor1;
-    printf("\nQual nó remover ?");
+    printf("\nQual nÃ³ remover ?");
     scanf("%d",&valor1);
     a = removerNo(a,valor1);
-    printf("Arvore:\n\n");printf("Arvore em Bfs - Não recursivo\n");	Bfs(a);
+    printf("Arvore:\n\n");printf("Arvore em Bfs - NÃ£o recursivo\n");	Bfs(a);
     //// remover no    ////
 
 	
@@ -102,7 +102,7 @@ main(){
     system("PAUSE");
 }
 
-// implementações das funções de No       
+// implementaÃ§Ãµes das funÃ§Ãµes de No       
 void mostrarNo(No *p){		//[1]
      if (p != NULL){ printf(" |%d|%c| ",p->chave, p->satelite);}
      else printf("no inexistente \n\n");
@@ -116,7 +116,7 @@ No* criarNo(int c, char ch){				//[2]
    return aux;    
 }
                
-// implementações das funções de ArvoreBB               
+// implementaÃ§Ãµes das funÃ§Ãµes de ArvoreBB               
 ArvoreBB criarArvoreBB( ){	//	ok				//[3]
      ArvoreBB ap;
      ap = NULL;
@@ -185,7 +185,7 @@ void Bfs(ArvoreBB a){				//[8]
            
 ArvoreBB inserirNo(ArvoreBB ap, No* novo){ // [9]	ok
 	No *p, *ant;
-	if (ap == NULL) ap = novo;  // árvore vazia
+	if (ap == NULL) ap = novo;  // Ã¡rvore vazia
     else {
 		p = ap;
         while (p != NULL){
@@ -266,7 +266,7 @@ ArvoreBB removerNo(ArvoreBB ap, int valor){		//[12]
 				q = q->dir;
 			}
 			else{
-				q = q->chave;
+				q = q->esq;
 			}
 		}
 		if(q != NULL){
@@ -304,14 +304,14 @@ int determinarAltura(ArvoreBB ap){	//	[13]	ok
      return h;
 }
 
-void mostrarArvoreERD(ArvoreBB ap){  // [14]caminhamento eRd NÃO RECURSIVO
+void mostrarArvoreERD(ArvoreBB ap){  // [14]caminhamento eRd NÃƒO RECURSIVO
 	Pilha aux;
 	criarPilhaVazia(&aux);
 	No *p;
 	p = ap; bool fim = FALSE;
 	if(ap != NULL){
 		do{
-			while(p!=NULL){ //coloco na pilha até bater no fim da arvore
+			while(p!=NULL){ //coloco na pilha atÃ© bater no fim da arvore
 				pushPilha(&aux,p);		
 				p = p->esq; //ponteiro corre para a esqueda
 			}
