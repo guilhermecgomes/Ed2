@@ -266,7 +266,7 @@ ArvoreBB removerNo(ArvoreBB ap, int valor){		//[12]
 				q = q->dir;
 			}
 			else{
-				q = q->chave;
+				q = q->esq;
 			}
 		}
 		if(q != NULL){
